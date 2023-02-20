@@ -1,0 +1,17 @@
+{
+  "name": "hoteldeskreservation_automatedtests",
+  "version": "1.0.0",
+  "description": "Appian Hotel Desk Reservation automated tests framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "RunTests"
+  },
+  "keywords": [
+    "cypress",
+    "hdr",
+    "hotelDeskReservation",
+    "appian"
+  ],
+  "author": "Bartosz Golec",
+  "license": "ISC"
+}
