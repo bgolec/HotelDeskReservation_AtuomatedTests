@@ -10,8 +10,12 @@
     "cypress",
     "hdr",
     "hotelDeskReservation",
-    "appian"
+    "appian",
+    "zimpatica"
   ],
   "author": "Bartosz Golec",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.6.0"
+  }
 }
