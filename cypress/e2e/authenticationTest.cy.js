@@ -9,7 +9,8 @@ describe('Check user authentication through login modal window', () => {
         cy.loginUsingUI()
 
         //then
-        cy.get(Cypress.env("selectors").topMenuLabels).should('have.length', 3)
+        cy.get(Cypress.env("selectors").topMenuLabels)
+            .should('have.length', 3)
     })
 
     it('Check if unprivileged user cannot authenticate successfully', () => {
@@ -23,7 +24,8 @@ describe('Check user authentication through login modal window', () => {
         cy.get(Cypress.env("selectors").loginSubmitButton).click()
 
         //then
-        cy.get(Cypress.env("selectors").authenticationErrorMessageNotification).should('include.text', authenticationErrorText)
+        cy.get(Cypress.env("selectors").authenticationErrorMessageNotification)
+            .should('include.text', authenticationErrorText)
     })
 
     it('Check if username and password are truly case sensitive', () => {
@@ -37,7 +39,8 @@ describe('Check user authentication through login modal window', () => {
         cy.get(Cypress.env("selectors").loginSubmitButton).click()
 
         //then
-        cy.get(Cypress.env("selectors").authenticationErrorMessageNotification).should('include.text', authenticationErrorText)
+        cy.get(Cypress.env("selectors").authenticationErrorMessageNotification)
+            .should('include.text', authenticationErrorText)
 
         //and when
         cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username'))
@@ -45,7 +48,8 @@ describe('Check user authentication through login modal window', () => {
         cy.get(Cypress.env("selectors").loginSubmitButton).click()
 
         //then
-        cy.get(Cypress.env("selectors").authenticationErrorMessageNotification).should('include.text', authenticationErrorText)
+        cy.get(Cypress.env("selectors").authenticationErrorMessageNotification)
+            .should('include.text', authenticationErrorText)
 
         //and when
         cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username').toUpperCase())
@@ -53,11 +57,7 @@ describe('Check user authentication through login modal window', () => {
         cy.get(Cypress.env("selectors").loginSubmitButton).click()
 
         //then
-        cy.get(Cypress.env("selectors").authenticationErrorMessageNotification).should('include.text', authenticationErrorText)
-
-        //and when
-        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username').toLowerCase())
-        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password'))
-        cy.get(Cypress.env("selectors").loginSubmitButton).click()
+        cy.get(Cypress.env("selectors").authenticationErrorMessageNotification)
+            .should('include.text', authenticationErrorText)
     })
 })
