@@ -24,13 +24,35 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('loginUsingUI', () => {
+Cypress.Commands.add('loginAdminUsingUI', () => {
     cy.visit(Cypress.env('baseUrl'))
 
     //when
     cy.get(Cypress.env("selectors").appianAccountHyperlink).click()
-    cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username'))
-    cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password'))
+    cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_admin'))
+    cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password_admin'))
+    cy.get(Cypress.env("selectors").loginSubmitButton).click()
+    cy.visit(Cypress.env('hotelDeskReservationQaUrl'))
+})
+
+Cypress.Commands.add('loginManagerUsingUI', () => {
+    cy.visit(Cypress.env('baseUrl'))
+
+    //when
+    cy.get(Cypress.env("selectors").appianAccountHyperlink).click()
+    cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_manager'))
+    cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password_manager'))
+    cy.get(Cypress.env("selectors").loginSubmitButton).click()
+    cy.visit(Cypress.env('hotelDeskReservationQaUrl'))
+})
+
+Cypress.Commands.add('loginUserUsingUI', () => {
+    cy.visit(Cypress.env('baseUrl'))
+
+    //when
+    cy.get(Cypress.env("selectors").appianAccountHyperlink).click()
+    cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_user'))
+    cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password_user'))
     cy.get(Cypress.env("selectors").loginSubmitButton).click()
     cy.visit(Cypress.env('hotelDeskReservationQaUrl'))
 })

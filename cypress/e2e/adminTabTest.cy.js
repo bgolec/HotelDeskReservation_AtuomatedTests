@@ -1,9 +1,10 @@
 describe("Check contents of Admin tab vor variety of users with different privileges", () => {
 
-    it("Check presence of elements for admin user", () => {
-        //given
-        cy.loginUsingUI()
+    before(() => {
+        cy.loginAdminUsingUI()
+    })
 
+    it("Check presence of elements for admin user", () => {
         //when
         switchToTab("Admin Page")
 

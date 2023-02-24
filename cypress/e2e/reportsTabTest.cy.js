@@ -2,9 +2,11 @@ import {switchToTab} from "./adminTabTest.cy.js";
 
 describe("Check contents of Reports tab vor variety of users with different privileges", () => {
 
+    before(() => {
+        cy.loginAdminUsingUI()
+    })
+
     it("Check presence of elements for admin user", () => {
-        //given
-        cy.loginUsingUI()
 
         //when
         switchToTab("Reports")

@@ -6,7 +6,7 @@ describe('Check user authentication through login modal window', () => {
 
     it('Check if privileged user authenticates successfully', () => {
         //given
-        cy.loginUsingUI()
+        cy.loginAdminUsingUI()
 
         //then
         cy.get(Cypress.env("selectors").topMenuLabels)
@@ -19,7 +19,7 @@ describe('Check user authentication through login modal window', () => {
 
         //when
         cy.get(Cypress.env("selectors").appianAccountHyperlink).click()
-        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username'))
+        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_admin'))
         cy.get(Cypress.env("selectors").passwordInput).type('wrongPassword')
         cy.get(Cypress.env("selectors").loginSubmitButton).click()
 
@@ -34,8 +34,8 @@ describe('Check user authentication through login modal window', () => {
 
         //when
         cy.get(Cypress.env("selectors").appianAccountHyperlink).click()
-        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username'))
-        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password').toLowerCase())
+        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_admin'))
+        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password_admin').toLowerCase())
         cy.get(Cypress.env("selectors").loginSubmitButton).click()
 
         //then
@@ -43,8 +43,8 @@ describe('Check user authentication through login modal window', () => {
             .should('include.text', authenticationErrorText)
 
         //and when
-        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username'))
-        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password').toUpperCase())
+        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_admin'))
+        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password_admin').toUpperCase())
         cy.get(Cypress.env("selectors").loginSubmitButton).click()
 
         //then
@@ -52,12 +52,44 @@ describe('Check user authentication through login modal window', () => {
             .should('include.text', authenticationErrorText)
 
         //and when
-        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username').toUpperCase())
-        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password'))
+        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_admin').toUpperCase())
+        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password_admin'))
         cy.get(Cypress.env("selectors").loginSubmitButton).click()
 
         //then
         cy.get(Cypress.env("selectors").authenticationErrorMessageNotification)
             .should('include.text', authenticationErrorText)
+    })
+
+    it('Check if HDR Manager can login', () => {
+        //given
+        cy.visit(Cypress.env('baseUrl'))
+
+        //when
+        cy.get(Cypress.env("selectors").appianAccountHyperlink).click()
+        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_manager'))
+        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password_manager'))
+        cy.get(Cypress.env("selectors").loginSubmitButton).click()
+        cy.visit(Cypress.env('hotelDeskReservationQaUrl'))
+
+        //then
+        cy.get(Cypress.env("selectors").topMenuLabels)
+            .should('have.length', 3)
+    })
+
+    it('Check if HDR User can login', () => {
+        //given
+        cy.visit(Cypress.env('baseUrl'))
+
+        //when
+        cy.get(Cypress.env("selectors").appianAccountHyperlink).click()
+        cy.get(Cypress.env("selectors").usernameInput).type(Cypress.env('username_user'))
+        cy.get(Cypress.env("selectors").passwordInput).type(Cypress.env('password_user'))
+        cy.get(Cypress.env("selectors").loginSubmitButton).click()
+        cy.visit(Cypress.env('hotelDeskReservationQaUrl'))
+
+        //then
+        cy.get(Cypress.env("selectors").topMenuLabels)
+            .should('have.length', 2)
     })
 })
