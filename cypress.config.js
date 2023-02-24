@@ -18,7 +18,10 @@ module.exports = defineConfig({
             topMenuLabels: ".SiteMenuTab---nav_label",
             authenticationErrorMessageNotification: "#errorMsg",
             textParagraphContainer: "[data-testid=ParagraphText-paragraph]",
-            showObjectsButton: ".SiteXrayButton---xrayButton"
+            showObjectsButton: ".SiteXrayButton---xrayButton",
+            adminTabContainer: "li[title=\"Admin Page\"]",
+            createBookingsTabContainer: "li[title=\"Create Bookings\"]",
+            reportsTabContainer: "li[title=\"Reports\"]",
         },
     },
 

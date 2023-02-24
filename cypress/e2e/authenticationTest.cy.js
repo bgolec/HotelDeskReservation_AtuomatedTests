@@ -9,8 +9,12 @@ describe('Check user authentication through login modal window', () => {
         cy.loginAdminUsingUI()
 
         //then
-        cy.get(Cypress.env("selectors").topMenuLabels)
-            .should('have.length', 3)
+        cy.get(Cypress.env("selectors").adminTabContainer)
+            .should('be.visible')
+        cy.get(Cypress.env("selectors").reportsTabContainer)
+            .should('be.visible')
+        cy.get(Cypress.env("selectors").createBookingsTabContainer)
+            .should('be.visible')
     })
 
     it('Check if unprivileged user cannot authenticate successfully', () => {
@@ -74,7 +78,12 @@ describe('Check user authentication through login modal window', () => {
 
         //then
         cy.get(Cypress.env("selectors").topMenuLabels)
-            .should('have.length', 3)
+        cy.get(Cypress.env("selectors").adminTabContainer)
+            .should('be.visible')
+        cy.get(Cypress.env("selectors").reportsTabContainer)
+            .should('be.visible')
+        cy.get(Cypress.env("selectors").createBookingsTabContainer)
+            .should('be.visible')
     })
 
     it('Check if HDR User can login', () => {
@@ -90,6 +99,9 @@ describe('Check user authentication through login modal window', () => {
 
         //then
         cy.get(Cypress.env("selectors").topMenuLabels)
-            .should('have.length', 2)
+        cy.get(Cypress.env("selectors").reportsTabContainer)
+            .should('be.visible')
+        cy.get(Cypress.env("selectors").createBookingsTabContainer)
+            .should('be.visible')
     })
 })
