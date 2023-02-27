@@ -10,7 +10,7 @@ describe("Check contents of Admin tab vor variety of users with different privil
         //then
         cy.get(Cypress.env("selectors").textParagraphContainer).contains("Location Management")
             .should('be.visible')
-        cy.get(Cypress.env("selectors").textParagraphContainer).contains("Workspace Management")
+        cy.get(Cypress.env("selectors").textParagraphContainer).contains("Floorplan Management")
             .should('be.visible')
         cy.get(Cypress.env("selectors").textParagraphContainer).contains("Zone Management")
             .should('be.visible')
@@ -34,7 +34,7 @@ describe("Check contents of Admin tab vor variety of users with different privil
         //then
         cy.get(Cypress.env("selectors").textParagraphContainer).contains("Location Management")
             .should('be.visible')
-        cy.get(Cypress.env("selectors").textParagraphContainer).contains("Workspace Management")
+        cy.get(Cypress.env("selectors").textParagraphContainer).contains("Floorplan Management")
             .should('be.visible')
         cy.get(Cypress.env("selectors").textParagraphContainer).contains("Zone Management")
             .should('be.visible')
