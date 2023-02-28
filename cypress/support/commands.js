@@ -56,3 +56,6 @@ Cypress.Commands.add('loginUserUsingUI', () => {
     cy.get(Cypress.env("selectors").loginSubmitButton).click()
     cy.visit(Cypress.env('hotelDeskReservationQaUrl'))
 })
+
+const compareSnapshotCommand = require("cypress-image-diff-js/dist/command");
+compareSnapshotCommand();

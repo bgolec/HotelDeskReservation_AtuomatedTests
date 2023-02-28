@@ -68,8 +68,3 @@ describe("Check contents of Reports tab vor variety of users with different priv
             .should('not.exist')
     })
 })
-
-export function clickLeftHandMenuItem(itemName) {
-    cy.get(Cypress.env("selectors").textParagraphContainer).contains(itemName)
-        .click()
-}

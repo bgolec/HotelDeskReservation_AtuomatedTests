@@ -16,6 +16,8 @@
   "author": "Bartosz Golec",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.6.0"
+    "cypress": "^12.6.0",
+    "cypress-iframe": "^1.0.1",
+    "cypress-image-diff-js": "^1.23.0"
   }
 }

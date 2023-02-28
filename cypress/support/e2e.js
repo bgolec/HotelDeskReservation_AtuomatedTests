@@ -20,5 +20,9 @@ import './commands'
 // require('./commands')
 
 beforeEach(() => {
-    cy.log('I run before every test in every spec file!!!!!!')
+    cy.log('New test is being ran')
 })
+
+after(() => {
+    cy.task("generateReport");
+});

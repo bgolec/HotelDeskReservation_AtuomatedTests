@@ -51,7 +51,7 @@ describe("Check Location Management section within Admin tab", () => {
         cy.get(tableColumnHeader).eq(7).should('have.text', 'Country')
     })
 
-    it.only("Check New Location modal dialog UI", () => {
+    it("Check New Location modal dialog UI", () => {
         //given
         cy.loginAdminUsingUI()
 

@@ -61,3 +61,8 @@ describe("Check contents of Admin tab vor variety of users with different privil
 export function switchToTab(tabName) {
     cy.get("li[title=\"" + tabName + "\"]").click()
 }
+
+export function clickLeftHandMenuItem(itemName) {
+    cy.get(Cypress.env("selectors").textParagraphContainer).contains(itemName)
+        .click()
+}
