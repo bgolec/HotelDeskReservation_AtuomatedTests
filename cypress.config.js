@@ -4,12 +4,12 @@ module.exports = defineConfig({
     env: {
         baseUrl: "https://appianqa.zimpatica.com/suite",
         hotelDeskReservationQaUrl: "https://appianqa.zimpatica.com/suite/sites/hotel-desk-reservation",
-        username_admin: "ble@spyro-soft.com",
-        password_admin: process.env.CYPRESS_APPIAN_PW,
+        username_admin: process.env.CYPRESS_APPIAN_ADMIN_USERNAME,
+        password_admin: process.env.CYPRESS_APPIAN_ADMIN_PW,
         username_manager: "HDR_Manager",
-        password_manager: process.env.CYPRESS_APPIAN_HDR_MANAGER,
+        password_manager: process.env.CYPRESS_APPIAN_HDR_MANAGER_PW,
         username_user: "HDR_User",
-        password_user: process.env.CYPRESS_APPIAN_HDR_USER,
+        password_user: process.env.CYPRESS_APPIAN_HDR_USER_PW,
         selectors: {
             usernameInput: "#un",
             passwordInput: "#pw",
