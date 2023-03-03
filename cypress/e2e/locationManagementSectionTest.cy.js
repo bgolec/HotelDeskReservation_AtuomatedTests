@@ -5,13 +5,11 @@ describe("Check Location Management section within Admin tab", () => {
     //Selectors
     let searchLocationInput = "[placeholder=\"Search ZMP Locations\"]"
     let searchButton = ".Button---search"
-    let citySelect = ".DynamicWidthWidget---dynamic_item.DynamicWidthWidget---flex_grow > div"
+    let itemSelect = ".DynamicWidthWidget---dynamic_item.DynamicWidthWidget---flex_grow > div"
     let exportToExcelButton = "[title=\"Export to Excel - Exports the currently filtered list of records as an Excel file.\"] > button"
     let manageFiltersButton = "[title=\"Manage filters\"] > button"
     let refreshButton = "[title=\"Refresh\"] > button"
-    let stateSelect = ".DynamicWidthWidget---dynamic_item.DynamicWidthWidget---flex_grow > div"
-    let countrySelect = ".DynamicWidthWidget---dynamic_item.DynamicWidthWidget---flex_grow > div"
-    let addLocationButton = ".FieldLayout---input_below > div > div > .Button---btn.Button---default_direction.Button---secondary.Button---small.appian-context-first-in-list.appian-context-last-in-list"
+    let addItemButton = ".FieldLayout---input_below > div > div > .Button---btn.Button---default_direction.Button---secondary.Button---small.appian-context-first-in-list.appian-context-last-in-list"
     let locationManagementTable = ".PagingGridLayout---table"
     let tableColumnHeader = "th > div > :nth-child(1)"
     let newLocationModalDialog = ".ContentLayout---content_layout.ContentLayout---inModal"
@@ -33,13 +31,13 @@ describe("Check Location Management section within Admin tab", () => {
         //then
         cy.get(searchLocationInput).should('be.visible')
         cy.get(searchButton).should('be.visible')
-        cy.get(citySelect).eq(1).should('be.visible')
+        cy.get(itemSelect).eq(1).should('be.visible')
         cy.get(exportToExcelButton).should('be.visible')
         cy.get(manageFiltersButton).should('be.visible')
         cy.get(refreshButton).should('be.visible')
-        cy.get(stateSelect).eq(2).should('be.visible')
-        cy.get(countrySelect).eq(3).should('be.visible')
-        cy.get(addLocationButton).eq(1).should('be.visible')
+        cy.get(itemSelect).eq(2).should('be.visible')
+        cy.get(itemSelect).eq(3).should('be.visible')
+        cy.get(addItemButton).eq(1).should('be.visible')
         cy.get(locationManagementTable).should('be.visible')
         cy.get(tableColumnHeader).eq(0).should('have.text', 'Id')
         cy.get(tableColumnHeader).eq(1).should('have.text', 'Location')
@@ -57,7 +55,7 @@ describe("Check Location Management section within Admin tab", () => {
 
         //when
         switchToTab("Admin Page")
-        cy.get(addLocationButton).click()
+        cy.get(addItemButton).click()
 
         //then
         cy.get(newLocationModalDialog).should('be.visible')
