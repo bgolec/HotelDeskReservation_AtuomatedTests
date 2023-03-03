@@ -1,25 +1,27 @@
-import {clickLeftHandMenuItem} from "./adminTabTest.cy";
-import {switchToTab} from "./adminTabTest.cy";
+import {
+    clickLeftHandMenuItem,
+    switchToTab,
+    searchButton,
+    exportToExcelButton,
+    manageFiltersButton,
+    refreshButton,
+    addItemButton,
+    table,
+    tableColumnHeader,
+    modalDialog,
+    modalDialogHeader,
+    modalDialogTextInput,
+    modalDialogTextInputLabel,
+    modalDialogSelect,
+    modalDialogSelectLabel,
+    modalDialogButton,
+    modalDialogDescription
+} from "./adminTabTest.cy";
 
 describe("Check Floorplan Management section within Admin tab", () => {
 
     //Selectors
-    let searchLocationInput = "[placeholder=\"Search workspace or location\"]"
-    let searchButton = ".Button---search"
-    let exportToExcelButton = "[title=\"Export to Excel - Exports the currently filtered list of records as an Excel file.\"] > button"
-    let manageFiltersButton = "[title=\"Manage filters\"] > button"
-    let refreshButton = "[title=\"Refresh\"] > button"
-    let addItemButton = ".FieldLayout---input_below > div > div > .Button---btn.Button---default_direction.Button---secondary.Button---small.appian-context-first-in-list.appian-context-last-in-list"
-    let table = ".PagingGridLayout---table"
-    let tableColumnHeader = "th > div > :nth-child(1)"
-    let modalDialog = ".ContentLayout---content_layout.ContentLayout---inModal"
-    let modalDialogHeader = ".TitleText---page_header"
-    let modalDialogDescription = ".FieldLayout---input_below > [data-testid=\"ParagraphText-paragraph\"]"
-    let modalDialogTextInputLabel = ".FieldLayout---label_above > label"
-    let modalDialogTextInput = ".FieldLayout---input_below > div > input"
-    let modalDialogSelectLabel = ".FieldLayout---label_above > span"
-    let modalDialogSelect = ".FieldLayout---field_layout > .FieldLayout---input_below > .DropdownWidget---dropdown"
-    let modalDialogButton = ".Button---inModalDialogLayout"
+    let floorplanManagementSearchLocationInput = "[placeholder=\"Search workspace or location\"]"
 
     it("Check presence of elements inside Floorplan Management section", () => {
         //given
@@ -30,7 +32,7 @@ describe("Check Floorplan Management section within Admin tab", () => {
         clickLeftHandMenuItem("Floorplan Management")
 
         //then
-        cy.get(searchLocationInput).should('be.visible')
+        cy.get(floorplanManagementSearchLocationInput).should('be.visible')
         cy.get(searchButton).should('be.visible')
         cy.get(exportToExcelButton).should('be.visible')
         cy.get(manageFiltersButton).should('be.visible')
@@ -50,7 +52,7 @@ describe("Check Floorplan Management section within Admin tab", () => {
         switchToTab("Admin Page")
         clickLeftHandMenuItem("Floorplan Management")
         //then
-        cy.get(searchLocationInput).should('be.visible')
+        cy.get(floorplanManagementSearchLocationInput).should('be.visible')
 
         //and when
         cy.get(addItemButton).click()

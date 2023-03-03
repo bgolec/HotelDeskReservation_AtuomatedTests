@@ -1,18 +1,20 @@
-import {switchToTab} from "./adminTabTest.cy";
-import {clickLeftHandMenuItem} from "./adminTabTest.cy";
+import {
+    switchToTab,
+    clickLeftHandMenuItem,
+    searchButton,
+    exportToExcelButton,
+    manageFiltersButton,
+    refreshButton,
+    addItemButton,
+    table,
+    tableColumnHeader,
+    itemSelect
+} from "./adminTabTest.cy"
 
 describe('Check Desk Management section within Admin tab', () => {
 
     //Selectors
-    let searchLocationInput = "[placeholder=\"Search Desks\"]"
-    let searchButton = ".Button---search"
-    let exportToExcelButton = "[title=\"Export to Excel - Exports the currently filtered list of records as an Excel file.\"] > button"
-    let manageFiltersButton = "[title=\"Manage filters\"] > button"
-    let refreshButton = "[title=\"Refresh\"] > button"
-    let addItemButton = ".FieldLayout---input_below > div > div > .Button---btn.Button---default_direction.Button---secondary.Button---small.appian-context-first-in-list.appian-context-last-in-list"
-    let table = ".PagingGridLayout---table"
-    let tableColumnHeader = "th > div > :nth-child(1)"
-    let itemSelect = ".DynamicWidthWidget---dynamic_item.DynamicWidthWidget---flex_grow > div"
+    let deskManagementSearchLocationInput = "[placeholder=\"Search Desks\"]"
 
     it('Check presence of elements inside Desk Management section', () => {
         //given
@@ -23,7 +25,7 @@ describe('Check Desk Management section within Admin tab', () => {
         clickLeftHandMenuItem("Desk Management")
 
         //then
-        cy.get(searchLocationInput).should('be.visible')
+        cy.get(deskManagementSearchLocationInput).should('be.visible')
         cy.get(searchButton).should('be.visible')
         cy.get(exportToExcelButton).should('be.visible')
         cy.get(manageFiltersButton).should('be.visible')
