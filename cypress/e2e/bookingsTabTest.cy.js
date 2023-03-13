@@ -1,4 +1,9 @@
-import {switchToTab} from "./adminTabTest.cy";
+import {
+    switchToTab,
+    searchButton,
+    manageFiltersButton,
+    refreshButton
+} from "./adminTabTest.cy";
 
 //Selectors
 let dateInput = '[data-testid=DatePickerWidget-textInput]'
@@ -10,6 +15,7 @@ let mapIframe = '.FieldLayout---input_below > .CertifiedSAILExtension---sail_ext
 let mapToggleRadioButton = '.RadioSelect---choice_pair > label'
 let dropdownItem = '.TetherComponent---sailcontents > div > div > .MenuWidget---listbox > li > div'
 let bulkBookDesks = '.SideBySideItem---flex_item > .ButtonLayout2---button_layout > .Button---btn_wrapper > button'
+let searchDesksInput = '[placeholder="Search Desks"]'
 
 describe("Check contents of bookings tab vor variety of users with different privileges", () => {
 
@@ -35,22 +41,40 @@ describe("Check contents of bookings tab vor variety of users with different pri
             .should('have.text', "Show Map")
         cy.get(mapToggleRadioButton).eq(1)
             .should('have.text', "Show Grid")
-        cy.get(bulkBookDesks).children()
+        cy.get(bulkBookDesks).eq(0).children()
             .should('have.text', "Please select a floorplan first")
         cy.get(bulkBookDesks)
             .should('be.disabled')
 
         //and when
-        chooseLocation("Chicago")
-        chooseFloorplan("One")
+        chooseLocation("Location 1")
+        chooseFloorplan("Floorplan 1")
 
         //then
         cy.get(mapIframe)
             .should('be.visible')
-        cy.get(bulkBookDesks)
+        cy.get(bulkBookDesks).eq(0)
             .should('have.text', "Bulk Book Desks")
+        cy.get(bulkBookDesks).eq(1)
+            .should('have.text', "Quick Book Desk")
         cy.get(bulkBookDesks)
             .should('be.enabled')
+
+        //and when
+        cy.get(mapToggleRadioButton).eq(1)
+            .click()
+
+        //then
+        cy.get("table")
+            .should('be.visible')
+        cy.get(searchDesksInput)
+            .should('be.visible')
+        cy.get(searchButton)
+            .should('be.visible')
+        cy.get(manageFiltersButton)
+            .should('be.visible')
+        cy.get(refreshButton)
+            .should('be.visible')
     })
 
     it("Check presence of elements for manager user", () => {
@@ -75,22 +99,42 @@ describe("Check contents of bookings tab vor variety of users with different pri
             .should('have.text', "Show Map")
         cy.get(mapToggleRadioButton).eq(1)
             .should('have.text', "Show Grid")
-        cy.get(bulkBookDesks).children()
+        cy.get(bulkBookDesks).eq(0).children()
             .should('have.text', "Please select a floorplan first")
         cy.get(bulkBookDesks)
             .should('be.disabled')
 
         //and when
-        chooseLocation("Chicago")
-        chooseFloorplan("One")
+        chooseLocation("Location 1")
+        chooseFloorplan("Floorplan 1")
 
         //then
         cy.get(mapIframe)
             .should('be.visible')
-        cy.get(bulkBookDesks)
+        cy.get(bulkBookDesks).eq(0)
             .should('have.text', "Bulk Book Desks")
-        cy.get(bulkBookDesks)
+        cy.get(bulkBookDesks).eq(0)
             .should('be.enabled')
+        cy.get(bulkBookDesks).eq(1)
+            .should('have.text', "Quick Book Desk")
+        cy.get(bulkBookDesks).eq(1)
+            .should('be.enabled')
+
+        //and when
+        cy.get(mapToggleRadioButton).eq(1)
+            .click()
+
+        //then
+        cy.get("table")
+            .should('be.visible')
+        cy.get(searchDesksInput)
+            .should('be.visible')
+        cy.get(searchButton)
+            .should('be.visible')
+        cy.get(manageFiltersButton)
+            .should('be.visible')
+        cy.get(refreshButton)
+            .should('be.visible')
     })
 
     it("Check presence of elements for regular user", () => {
@@ -115,32 +159,52 @@ describe("Check contents of bookings tab vor variety of users with different pri
             .should('have.text', "Show Map")
         cy.get(mapToggleRadioButton).eq(1)
             .should('have.text', "Show Grid")
-        cy.get(bulkBookDesks).children()
+        cy.get(bulkBookDesks).eq(0).children()
             .should('have.text', "Please select a floorplan first")
         cy.get(bulkBookDesks)
             .should('be.disabled')
 
         //and when
-        chooseLocation("Chicago")
-        chooseFloorplan("One")
+        chooseLocation("Location 1")
+        chooseFloorplan("Floorplan 1")
 
         //then
         cy.get(mapIframe)
             .should('be.visible')
-        cy.get(bulkBookDesks)
+        cy.get(bulkBookDesks).eq(0)
             .should('have.text', "Bulk Book Desks")
-        cy.get(bulkBookDesks)
+        cy.get(bulkBookDesks).eq(0)
             .should('be.enabled')
+        cy.get(bulkBookDesks).eq(1)
+            .should('have.text', "Quick Book Desk")
+        cy.get(bulkBookDesks).eq(1)
+            .should('be.enabled')
+
+        //and when
+        cy.get(mapToggleRadioButton).eq(1)
+            .click()
+
+        //then
+        cy.get("table")
+            .should('be.visible')
+        cy.get(searchDesksInput)
+            .should('be.visible')
+        cy.get(searchButton)
+            .should('be.visible')
+        cy.get(manageFiltersButton)
+            .should('be.visible')
+        cy.get(refreshButton)
+            .should('be.visible')
     })
 
     function chooseLocation(location) {
-        cy.get(locationSelect).eq(1).click()
+        cy.get(locationSelect).eq(2).click()
         cy.get(dropdownItem).contains(location).click()
         cy.wait(1000)
     }
 
     function chooseFloorplan(location) {
-        cy.get(floorplanSelect).eq(2).click()
+        cy.get(floorplanSelect).eq(0).click()
         cy.get(dropdownItem).contains(location).click()
         cy.wait(1000)
     }

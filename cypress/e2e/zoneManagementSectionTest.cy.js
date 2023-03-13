@@ -70,7 +70,7 @@ describe('Check Zone Management section within Admin tab', () => {
         cy.get(modalDialogTextInput).should('have.length', 1)
         cy.get(modalDialogTextInputLabel).eq(0).should('have.text', 'Zone Name')
         cy.get(modalDialogTextInput).eq(0).should('be.visible')
-        cy.get(modalDialogSelect).should('have.length', 1)
+        cy.get(modalDialogSelect).should('have.length', 2)
         cy.get(modalDialogSelect).eq(0).should('be.visible')
         cy.get(modalDialogSelectLabel).eq(2).should('have.text', 'Floorplan')
         cy.get(modalDialogButton).eq(0).should('have.text', 'Cancel')

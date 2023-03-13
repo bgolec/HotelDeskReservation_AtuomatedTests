@@ -34,7 +34,7 @@ describe('Check Desk Management section within Admin tab', () => {
         cy.get(itemSelect).eq(1).should('be.visible')
         cy.get(itemSelect).eq(2).should('be.visible')
         cy.get(itemSelect).eq(3).should('be.visible')
-        cy.get(addItemButton).should('not.exist')
+        cy.get(addItemButton).should('be.visible')
         cy.get(table).should('be.visible')
         cy.get(tableColumnHeader).eq(0).should('have.text', 'Id')
         cy.get(tableColumnHeader).eq(1).should('have.text', 'SVG Id')

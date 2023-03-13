@@ -21,7 +21,7 @@ import {
 describe("Check Floorplan Management section within Admin tab", () => {
 
     //Selectors
-    let floorplanManagementSearchLocationInput = "[placeholder=\"Search workspace or location\"]"
+    let floorplanManagementSearchLocationInput = "[placeholder=\"Search floorplan or location\"]"
 
     it("Check presence of elements inside Floorplan Management section", () => {
         //given

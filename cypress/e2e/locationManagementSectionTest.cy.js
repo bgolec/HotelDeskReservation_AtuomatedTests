@@ -21,7 +21,7 @@ import {
 describe("Check Location Management section within Admin tab", () => {
 
     //Selectors
-    let floorplanManagementSearchLocationInput = "[placeholder=\"Search ZMP Locations\"]"
+    let floorplanManagementSearchLocationInput = "[placeholder=\"Search Locations\"]"
 
     it("Check presence of elements inside Location Management section", () => {
         //given
