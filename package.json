@@ -4,7 +4,10 @@
   "description": "Appian Hotel Desk Reservation automated tests framework",
   "main": "index.js",
   "scripts": {
-    "test": "RunTests"
+    "tests:chrome": "cypress run --browser chrome",
+    "tests:firefox": "cypress run --browser firefox",
+    "tests:edge": "cypress run --browser edge",
+    "cypress:open": "cypress open"
   },
   "keywords": [
     "cypress",
@@ -16,6 +19,7 @@
   "author": "Bartosz Golec",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.31.2",
     "cypress": "^12.6.0",
     "cypress-iframe": "^1.0.1",
     "cypress-image-diff-js": "^1.23.0"
